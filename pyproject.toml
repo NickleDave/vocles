@@ -4,12 +4,11 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "vocles"
-authors = [{name = "David Nicholson", email = "nickledave@users.noreply.github.com"}]
-description = "a lightweight tool for building datasets of vocalizations"
-version = "0.1.0"
 authors = [
     {name = "David Nicholson", email = "nickledave@users.noreply.github.com"}
 ]
+description = "a lightweight tool for building datasets of vocalizations"
+version = "0.1.0"
 classifiers = [
         'License :: OSI Approved :: BSD License',
         'Development Status :: 5 - Production/Stable',
@@ -35,8 +34,8 @@ Home = "https://github.com/NickleDave/vocles"
 dev = [
     "twine >=3.7.1",
     "black >=21.12b0",
-    "ipython >=8.0.0"
-    "nox >= 2022.1.7"
+    "ipython >=8.0.0",
+    "nox >= 2022.1.7",
 ]
 test = [
     "pytest >=6.2.5",
