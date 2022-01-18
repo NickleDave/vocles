@@ -33,3 +33,6 @@ class Dataset:
     def to_csv(self, csv_path: [str, pathlib.Path]) -> None:
         df = self.to_df()
         df.to_csv(csv_path)
+
+    def to_sqlite(self):
+        return NotImplemented
