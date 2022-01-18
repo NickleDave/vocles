@@ -23,7 +23,7 @@ coverage.xml
 doc/_build/
 
 # test data
-tests/test_data/source/
+tests/data_for_tests/source/
 *.tar.gz
 
 # virtual
