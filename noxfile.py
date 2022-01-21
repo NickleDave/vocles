@@ -3,10 +3,7 @@ from pathlib import Path
 
 import nox
 
-nox.options.sessions = [
-    "lint",
-    "tests"
-]
+nox.options.sessions = ["lint", "tests"]
 #
 # PYTHON_ALL_VERSIONS = [
 #     "3.7",
@@ -16,21 +13,19 @@ nox.options.sessions = [
 
 DIR = Path(__file__).parent.resolve()
 
-DATA_FOR_TESTS_DIR = Path('./tests/data_for_tests/')
-SOURCE_TEST_DATA_DIR = DATA_FOR_TESTS_DIR / 'source'
-GENERATED_TEST_DATA_DIR = DATA_FOR_TESTS_DIR / 'generated'
+DATA_FOR_TESTS_DIR = Path("./tests/data_for_tests/")
+SOURCE_TEST_DATA_DIR = DATA_FOR_TESTS_DIR / "source"
+GENERATED_TEST_DATA_DIR = DATA_FOR_TESTS_DIR / "generated"
 
-SOURCE_TEST_DATA_URL = 'https://osf.io/ubhsj/download'
+SOURCE_TEST_DATA_URL = "https://osf.io/ubhsj/download"
 
-SOURCE_TEST_DATA_TAR = SOURCE_TEST_DATA_DIR / 'source_test_data.tar.gz'
+SOURCE_TEST_DATA_TAR = SOURCE_TEST_DATA_DIR / "source_test_data.tar.gz"
 # GENERATED_TEST_DATA_TAR = GENERATED_TEST_DATA_DIR / 'generated_test_data.tar.gz'
 
 
 def is_test_data_subdir_empty(test_data_subdir):
-    listdir = [path.name
-               for path in sorted(test_data_subdir.iterdir())
-               ]
-    return listdir == ['.gitkeep'] or len(listdir) < 1
+    listdir = [path.name for path in sorted(test_data_subdir.iterdir())]
+    return listdir == [".gitkeep"] or len(listdir) < 1
 
 
 @nox.session
@@ -39,17 +34,9 @@ def download_test_data(session: nox.Session) -> None:
     Download data for tests.
     """
     session.run(
-        'wget',
-        '-q',
-        f'{SOURCE_TEST_DATA_URL}',
-        '-O',
-        f'{SOURCE_TEST_DATA_TAR}'
+        "wget", "-q", f"{SOURCE_TEST_DATA_URL}", "-O", f"{SOURCE_TEST_DATA_TAR}"
     )
-    session.run(
-        'tar',
-        '-xzf',
-        f'{SOURCE_TEST_DATA_TAR}'
-    )
+    session.run("tar", "-xzf", f"{SOURCE_TEST_DATA_TAR}")
 
 
 @nox.session
@@ -112,7 +99,4 @@ def build(session: nox.Session) -> None:
         shutil.rmtree(dist_p)
 
     session.install("flit")
-    session.run(
-        "flit",
-        "build"
-    )
+    session.run("flit", "build")
