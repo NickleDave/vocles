@@ -5,37 +5,35 @@ import pytest
 
 
 @pytest.fixture
-def paths_factory(annot_file_birdsongrec,
-                  annot_files_notmat,
-                  annot_file_yarden,
-                  audio_list_cbin,
-                  audio_list_wav,
-                  spect_list_mat,
-                  spect_list_npz
-                  ):
+def paths_factory(
+    annot_file_birdsongrec,
+    annot_files_notmat,
+    annot_file_yarden,
+    audio_list_cbin,
+    audio_list_wav,
+    spect_list_mat,
+    spect_list_npz,
+):
     audio_format_list_map = {
-        'cbin': audio_list_cbin,
-        'wav': audio_list_wav,
+        "cbin": audio_list_cbin,
+        "wav": audio_list_wav,
         None: None,
     }
 
     spect_format_list_map = {
-        'mat': spect_list_mat,
-        'npz':  spect_list_npz,
+        "mat": spect_list_mat,
+        "npz": spect_list_npz,
         None: None,
     }
 
     annot_format_file_map = {
-        'birdsongrec': annot_file_birdsongrec,
-        'notmat': annot_files_notmat,
-        'yarden': annot_file_yarden,
+        "birdsongrec": annot_file_birdsongrec,
+        "notmat": annot_files_notmat,
+        "yarden": annot_file_yarden,
         None: None,
     }
 
-    def _paths_for_dataset(audio_format,
-                           spect_format,
-                           annot_format,
-                           path_as_str=False):
+    def _paths_for_dataset(audio_format, spect_format, annot_format, path_as_str=False):
 
         audio_paths = audio_format_list_map[audio_format]
         spect_paths = spect_format_list_map[spect_format]
@@ -49,9 +47,11 @@ def paths_factory(annot_file_birdsongrec,
                 pathlib.Path(spect_path.stem).stem
                 for spect_path in spect_paths
             ]
-            audio_paths = [audio_path
-                           for audio_path in audio_paths
-                           if audio_path.name in audio_paths_from_spect]
+            audio_paths = [
+                audio_path
+                for audio_path in audio_paths
+                if audio_path.name in audio_paths_from_spect
+            ]
 
         if annot_paths is not None:
             # only need to modify list of annot paths
@@ -85,9 +85,10 @@ def paths_factory(annot_file_birdsongrec,
                     the_paths = str(the_paths)
                 paths_dict[these_paths] = the_paths
 
-        return (paths_dict['audio_paths'],
-                paths_dict['spect_paths'],
-                paths_dict['annot_paths'],
-                )
+        return (
+            paths_dict["audio_paths"],
+            paths_dict["spect_paths"],
+            paths_dict["annot_paths"],
+        )
 
     return _paths_for_dataset

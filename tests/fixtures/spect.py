@@ -11,7 +11,9 @@ def spect_dir_mat(source_test_data_root):
 def spect_dir_npz(source_test_data_root):
     return sorted(
         source_test_data_root.joinpath(
-            "audio_cbin_annot_notmat", "gy6or6", "032312",
+            "audio_cbin_annot_notmat",
+            "gy6or6",
+            "032312",
         ).glob("spectrograms_generated*")
     )[0]
 

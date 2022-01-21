@@ -14,7 +14,9 @@ def audio_list_cbin(audio_dir_cbin):
 
 @pytest.fixture
 def audio_dir_wav(source_test_data_root):
-    return source_test_data_root.joinpath("audio_wav_annot_birdsongrec", "Bird0", "Wave")
+    return source_test_data_root.joinpath(
+        "audio_wav_annot_birdsongrec", "Bird0", "Wave"
+    )
 
 
 @pytest.fixture
